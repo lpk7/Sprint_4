@@ -10,18 +10,10 @@ def books_collector():
 
 
 @pytest.fixture(scope="function")
-def first_new_book(books_collector):
-    return books_collector.add_new_book(data.BOOK_1[0])
-
-
-@pytest.fixture(scope="function")
-def second_new_book(books_collector):
-    return books_collector.add_new_book(data.BOOK_2[0])
-
-
-@pytest.fixture(scope="function")
 def first_book_with_genre(books_collector):
-    return books_collector.set_book_genre(data.BOOK_1[0], data.BOOK_1[1])
+    books_collector.add_new_book(data.BOOK_1[0])
+    books_collector.set_book_genre(data.BOOK_1[0], data.BOOK_1[1])
+    return books_collector.books_genre
 
 
 @pytest.fixture(scope="function")
